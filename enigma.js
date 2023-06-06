@@ -26,18 +26,6 @@ let alphabet = [
   'y',
   'z',
 ];
-let encryptRotor1 = createRotor(alphabet);
-let encryptRotor2 = createRotor(alphabet);
-let encryptRotor3 = createRotor(alphabet);
-let encryptReflector = createRotor(alphabet);
-let decryptRotor1 = [...encryptRotor1];
-let decryptRotor2 = [...encryptRotor2];
-let decryptRotor3 = [...encryptRotor3];
-let decryptReflector = [...encryptReflector];
-let rotor1Count = 0;
-let rotor2Count = 0;
-let rotor3Count = 0;
-
 let plugPairs = [
   ['a', 'k'],
   ['b', 'i'],
@@ -65,6 +53,20 @@ let reflectorPairs = [
   ['o', 'v'],
   ['w', 'y'],
 ];
+let encryptRotor1 = createRotor(alphabet);
+let encryptRotor2 = createRotor(alphabet);
+let encryptRotor3 = createRotor(alphabet);
+let encryptReflector = createRotor(alphabet);
+let decryptRotor1 = [...encryptRotor1];
+let decryptRotor2 = [...encryptRotor2];
+let decryptRotor3 = [...encryptRotor3];
+let decryptReflector = [...encryptReflector];
+let decryptRotor1Count = 0;
+let decryptRotor2Count = 0;
+let decryptRotor3Count = 0;
+let encryptRotor1Count = 0;
+let encryptRotor2Count = 0;
+let encryptRotor3Count = 0;
 
 function createRotor(alphabet) {
   let newAlphabet = [...alphabet];
@@ -95,37 +97,37 @@ function rotor(letter, rotorA, rotorB) {
 }
 
 function decryptRotateRotor() {
-  if (rotor1Count < 26) {
+  if (decryptRotor1Count < 26) {
     decryptRotor1.unshift(decryptRotor1.pop());
-    rotor1Count++;
-  } else if (rotor1Count === 26 && rotor2Count < 26) {
+    decryptRotor1Count++;
+  } else if (decryptRotor1Count === 26 && decryptRotor2Count < 26) {
     decryptRotor1.unshift(decryptRotor1.pop());
     decryptRotor2.unshift(decryptRotor2.pop());
-    rotor1Count = 0;
-    rotor2Count++;
-  } else if (rotor1Count === 26 && rotor2Count === 26) {
+    decryptRotor1Count = 0;
+    decryptRotor2Count++;
+  } else if (decryptRotor1Count === 26 && decryptRotor2Count === 26) {
     decryptRotor1.unshift(decryptRotor1.pop());
     decryptRotor2.unshift(decryptRotor2.pop());
     decryptRotor3.unshift(decryptRotor3.pop());
-    rotor1Count = 0;
-    rotor2Count = 0;
+    decryptRotor1Count = 0;
+    decryptRotor2Count = 0;
   }
 }
 function encryptRotateRotor() {
-  if (rotor1Count < 26) {
+  if (encryptRotor1Count < 26) {
     encryptRotor1.unshift(encryptRotor1.pop());
-    rotor1Count++;
-  } else if (rotor1Count === 26 && rotor2Count < 26) {
+    encryptRotor1Count++;
+  } else if (encryptRotor1Count === 26 && encryptRotor2Count < 26) {
     encryptRotor1.unshift(encryptRotor1.pop());
     encryptRotor2.unshift(encryptRotor2.pop());
     encryptRotor1Count = 0;
-    rotor2Count++;
-  } else if (rotor1Count === 26 && rotor2Count === 26) {
+    encryptRotor2Count++;
+  } else if (encryptRotor1Count === 26 && encryptRotor2Count === 26) {
     encryptRotor1.unshift(encryptRotor1.pop());
     encryptRotor2.unshift(encryptRotor2.pop());
     encryptRotor3.unshift(encryptRotor3.pop());
-    rotor1Count = 0;
-    rotor2Count = 0;
+    encryptRotor1Count = 0;
+    encryptRotor2Count = 0;
   }
 }
 
